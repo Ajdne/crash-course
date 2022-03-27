@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class carMovement : MonoBehaviour
 {
-    float speed = 10;
-    float turnSpeed = 100;
+    public float speed = 10;
+    public float turnSpeed = 100;
 
     public float currentX;
     public float currentY;
@@ -21,7 +21,8 @@ public class carMovement : MonoBehaviour
         //rotationX = transform.rotation.x;
         
         // Constantly moving forward if not flipped
-        if (rotation.eulerAngles.x < 60f && rotation.eulerAngles.x > -60f)  {
+        if (rotation.eulerAngles.x < 60f && rotation.eulerAngles.x > -60f)
+        {
             // Car moving forward
             transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0), Space.Self);
             
