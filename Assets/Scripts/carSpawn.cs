@@ -22,6 +22,10 @@ public class carSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))    // can spawn additional cars for testing
+        {
+            Debug.Log("Space key was pressed.");
+            Instantiate(theCar, new Vector3(0, 1, 0), Quaternion.identity);
+        }
     }
 }

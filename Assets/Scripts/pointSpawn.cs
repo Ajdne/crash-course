@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class pointSpawn : MonoBehaviour
 {
-    int racq = 0;   //GLUPOST
     float xPos;
     float zPos;
-    float pointTimer = 5.0f;
+    int pointTimer = 10;
 
     public GameObject thePoint;
 
@@ -16,20 +15,19 @@ public class pointSpawn : MonoBehaviour
     {
         StartCoroutine(PointSpawn());
     }
+
     IEnumerator PointSpawn()
-    {    
-        while (racq == 0) // treba mi bolju uslov od ovoga
+    {
+        while (true) //(racq == 10)      // treba mi bolju uslov od ovoga
         {            
-            xPos = Random.Range(-29.5f, 29.5f);
-            zPos = Random.Range(-59.5f, 59.5f);
+            xPos = Random.Range(-25.5f, 25.5f);
+            zPos = Random.Range(-49.5f, 49.5f);
             Instantiate(thePoint, new Vector3(xPos, 0.6f, zPos), Quaternion.identity);
             yield return new WaitForSeconds(pointTimer);
-            
-            //availablePoints += 1;
+            // availablePoints += 1;
             //pointTimer *= 0.9999f;     // doing this to reduce point spawn time and speed up the game
         } 
     }
-
     // Update is called once per frame
     void Update()
     {
