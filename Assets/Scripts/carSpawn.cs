@@ -25,7 +25,7 @@ public class carSpawn : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))    // can spawn additional cars for testing
         {
             Debug.Log("Space key was pressed.");
-            Instantiate(theCar, new Vector3(0, 1, 0), Quaternion.identity);
+            Instantiate (theCar, new Vector3(0, 1, 0), Quaternion.identity);
         }
     }
 }

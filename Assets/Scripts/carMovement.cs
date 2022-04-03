@@ -10,22 +10,23 @@ public class carMovement : MonoBehaviour
     public float currentX;
     public float currentY;
     public float currentZ;
+    float rotationX;
     Quaternion rotation;
-    //Quaternion startRotation;
 
     // Update is called once per frame
     void Update()
     {
         float turn = Input.GetAxisRaw("Horizontal");
 
-        //rotationX = transform.rotation.x;
+        rotationX = rotation.x;
         
         // Constantly moving forward if not flipped
-        if (rotation.eulerAngles.x < 60f && rotation.eulerAngles.x > -60f)
+        if (rotationX < 60f && rotationX > -60f)
         {
             // Car moving forward
             transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0), Space.Self);
-            
+            Debug.Log(rotation.x);
+
             // Turning of a car
             transform.Rotate(new Vector3(0, turn * turnSpeed * Time.deltaTime, 0));
         }
@@ -43,6 +44,6 @@ public class carMovement : MonoBehaviour
     }
 
     void Start() {
-        rotation = Quaternion.identity;
+        //rotation = Quaternion.this.gameObject;
     }
 }
