@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class carMovement : MonoBehaviour
 {
+    [SerializeField] WheelCollider frontLeft;
+    [SerializeField] WheelCollider frontRight;
+    [SerializeField] WheelCollider backLeft;
+    [SerializeField] WheelCollider backRight;    
     public float speed = 10;
     public float turnSpeed = 100;
 
@@ -21,16 +25,21 @@ public class carMovement : MonoBehaviour
         rotationX = rotation.x;
         
         // Constantly moving forward if not flipped
-        if (rotationX < 60f && rotationX > -60f)
-        {
+
+
+
+        // ODRADITI MODEL AUTA ISPOCETKA !!!!!!!!!!!!!!!!!
+
+
             // Car moving forward
-            transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0), Space.Self);
+            frontLeft.motorTorque = speed * 1;
+            frontRight.motorTorque = speed * 1;
+
+            //transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0), Space.Self);
             Debug.Log(rotation.x);
 
             // Turning of a car
             transform.Rotate(new Vector3(0, turn * turnSpeed * Time.deltaTime, 0));
-        }
-            
 
             currentX = transform.position.x;
             currentY = transform.position.y;
