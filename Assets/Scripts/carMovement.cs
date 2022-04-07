@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class carMovement : MonoBehaviour
 {
-    [SerializeField] WheelCollider frontLeft;
     [SerializeField] WheelCollider frontRight;
-    [SerializeField] WheelCollider backLeft;
-    [SerializeField] WheelCollider backRight;    
+    [SerializeField] WheelCollider frontLeft;
+    [SerializeField] WheelCollider backRight;
+    [SerializeField] WheelCollider backLeft;    
     public float speed = 10;
     public float turnSpeed = 100;
 
@@ -18,7 +18,7 @@ public class carMovement : MonoBehaviour
     Quaternion rotation;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float turn = Input.GetAxisRaw("Horizontal");
 
