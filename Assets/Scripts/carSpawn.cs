@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class carSpawn : MonoBehaviour
 {
-    carMovement movementScript;
+    SimpleCarController movementScript;
     public GameObject theCar;
+
+    float newCurrentX;
+    float newCurrentY;
+    float newCurrentZ;
+
     public void spawnCar() {
         Instantiate(theCar,
-            new Vector3( movementScript.currentX,
-                        movementScript.currentY, 
-                        movementScript.currentZ),
-                        transform.rotation * Quaternion.Euler(0, 180, 0));
-
+            new Vector3(newCurrentX, newCurrentY, newCurrentZ), transform.rotation * Quaternion.Euler(0, 180, 0));
     }
+
     void Start()
     {
-        movementScript = theCar.GetComponent<carMovement>();
+        movementScript = theCar.GetComponent<SimpleCarController>();
     }
 
     // Update is called once per frame
@@ -27,5 +29,9 @@ public class carSpawn : MonoBehaviour
             Debug.Log("Space key was pressed.");
             Instantiate (theCar, new Vector3(0, 1, 0), Quaternion.identity);
         }
+
+        newCurrentX = movementScript.currentX - 1;
+        newCurrentY = movementScript.currentY;
+        newCurrentZ = movementScript.currentZ - 1;
     }
 }

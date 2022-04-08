@@ -9,13 +9,22 @@ public class AxleInfo {
     public bool motor; // is this wheel attached to motor?
     public bool steering; // does this wheel apply steer angle?
 }
+
 public class SimpleCarController : MonoBehaviour {
     public List<AxleInfo> axleInfos; // the information about each individual axle
     public float maxMotorTorque; // maximum torque the motor can apply to wheel
     public float maxSteeringAngle; // maximum steer angle the wheel can have
+
+
+    // part of code from carMovement script
+    public float currentX;
+    public float currentY;
+    public float currentZ;
+    // *************************************
+
     public void FixedUpdate()
     {
-        float motor = maxMotorTorque * Input.GetAxis("Vertical");
+        float motor = maxMotorTorque * 1; //Input.GetAxis("Vertical");
         float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
         
         foreach (AxleInfo axleInfo in axleInfos) {
@@ -30,5 +39,16 @@ public class SimpleCarController : MonoBehaviour {
                 axleInfo.rightWheel.motorTorque = motor;
             }
         }
+
+        currentX = transform.position.x;
+        currentY = transform.position.y;
+        currentZ = transform.position.z;
+
+        // part of code from carMovement script
+        // Destory the car if it falls from the plane
+        if (currentY < -10) {   
+            Destroy(this.gameObject);
+        }
+        //***************************************************
     }
 }
