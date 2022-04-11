@@ -25,7 +25,7 @@ public class SimpleCarController : MonoBehaviour {
 
     public void FixedUpdate()
     {
-        float motor = maxMotorTorque * 1; //Input.GetAxis("Vertical");
+        float motor = maxMotorTorque * 3; //Input.GetAxis("Vertical");
         float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
         
         // trying to avoid getting stuck into objects. Now the car can always rotate, no matter the wheels
