@@ -45,7 +45,7 @@ public class SimpleCarController : MonoBehaviour {
             }
 
             // THIS NEED FIXIN'
-            if ( motor > maxMotorTorque * 0.5) {    
+            if ( motor > maxMotorTorque * 0.2) {    
                 transform.Translate(new Vector3(0, 0, speed * Time.deltaTime), Space.Self);
             }
         }

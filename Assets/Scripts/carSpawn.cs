@@ -5,6 +5,7 @@ using UnityEngine;
 public class carSpawn : MonoBehaviour
 {
     SimpleCarController movementScript;
+    public GameObject theCarInvisible;
     public GameObject theCar;
 
     float newCurrentX;
@@ -12,7 +13,7 @@ public class carSpawn : MonoBehaviour
     float newCurrentZ;
 
     public void spawnCar() {
-        Instantiate(theCar,
+        Instantiate(theCarInvisible,
             new Vector3(newCurrentX, newCurrentY, newCurrentZ), transform.rotation * Quaternion.Euler(0, 180, 0));
     }
 
@@ -27,11 +28,11 @@ public class carSpawn : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))    // can spawn additional cars for testing
         {
             Debug.Log("Space key was pressed.");
-            Instantiate (theCar, new Vector3(0, 1, 0), Quaternion.identity);
+            Instantiate (theCar, new Vector3(0, 2, 0), Quaternion.identity);
         }
 
-        newCurrentX = movementScript.currentX - 1;
+        newCurrentX = movementScript.currentX;
         newCurrentY = movementScript.currentY;
-        newCurrentZ = movementScript.currentZ - 1;
+        newCurrentZ = movementScript.currentZ;
     }
 }
